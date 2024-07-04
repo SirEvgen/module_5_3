@@ -12,6 +12,10 @@ class House:
     def __add__(self, other):
         if isinstance(other, int):
             return House(self.name, self.number_of_floors + other)
+        elif isinstance(other, House):
+            return House(self.name + '+' + other.name, self.number_of_floors + other.number_of_floors)
+        else:
+            print('Некорректный ввод данных')
 
     def __iadd__(self, value):
         if isinstance(value, int):
@@ -24,26 +28,50 @@ class House:
     def __eq__(self, other):
         if isinstance(other, int) or self.number_of_floors:
             return isinstance(other, House) and self.number_of_floors == other.number_of_floors
+        elif isinstance(other, House):
+            return House(self.name == other.name and self.number_of_floors == other.number_of_floors)
+        else:
+            print('Некорректный ввод данных')
 
     def __gt__(self, other):
         if isinstance(other, int) or self.number_of_floors:
             return isinstance(other, House) and self.number_of_floors > other.number_of_floors
+        elif isinstance(other, House):
+            return House(self.number_of_floors > other.number_of_floors)
+        else:
+            print('Некорректный ввод данных')
 
     def __ge__(self, other):
         if isinstance(other, int) or self.number_of_floors:
             return isinstance(other, House) and self.number_of_floors >= other.number_of_floors
+        elif isinstance(other, House):
+            return House(self.number_of_floors >= other.number_of_floors)
+        else:
+            print('Некорректный ввод данных')
 
     def __lt__(self, other):
         if isinstance(other, int) or self.number_of_floors:
             return isinstance(other, House) and self.number_of_floors < other.number_of_floors
+        elif isinstance(other, House):
+            return House(self.number_of_floors < other.number_of_floors)
+        else:
+            print('Некорректный ввод данных')
 
     def __le__(self, other):
         if isinstance(other, int) or self.number_of_floors:
             return isinstance(other, House) and self.number_of_floors <= other.number_of_floors
+        elif isinstance(other, House):
+            return House(self.number_of_floors <= other.number_of_floors)
+        else:
+            print('Некорректный ввод данных')
 
     def __ne__(self, other):
         if isinstance(other, int) or self.number_of_floors:
             return isinstance(other, House) and self.number_of_floors != other.number_of_floors
+        elif isinstance(other, House):
+            return House(self.number_of_floors != other.number_of_floors)
+        else:
+            print('Некорректный ввод данных')
 
 
 h1 = House("ЖК Эверест", 10)
